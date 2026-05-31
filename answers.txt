@@ -1,0 +1,35 @@
+a)What is a syscall? Explain in a sentence.
+Ans. Programs cannot directly interact with hardware, therefore, they make a request to the OS kernel whenever an operation is to be conducted
+like memory allocation, for example. This request is referred to as a system call or syscall for short.
+
+b)Name a few syscalls and what they do.
+Ans. Going in order of the output.
+	1. execve: This syscall basically replaces the current running process with a new program. So for example, if we type in a command into 
+		   the terminal like ls, what happens is that the shell creates a child process which has a clone of the shell. This clone is 
+		   discarded and the ls program is loaded when syscall execve is used. It must be noted that the original shell remains intact.
+	2. brk: This has more to do with dynamic memory allocation ie malloc(). Basically, it shifts the boundary of the process' heap memory. 
+		It is called at the beginning because every program needs some memory to work with initially.
+	3. mmap: This basically just maps a file or a block of memory into a process' address, similar to a pointer. So rather than creating two 
+		 copies in the kernel and program buffer, the data is accessed by the process directly using address, like how a pointer works.
+		 You can use it to map real files or just get allocated memory as well. In the first mmap syscall as seen in screenshot, it is
+		 anonymous mmap which is called to get memory initially, again involves malloc.
+	4. access: This syscall exists to check whether the program has permission to access a file directly without opening it. 
+	5. openat: This opens a file and returns a number which is the file descriptor. With this file descriptor you can use syscalls like read,
+		   write, close etc.
+	6. read: This syscall takes data from the disk as required and then gives it to the program buffer.
+	7. fstat: This is called to ask for metadata of an open file from the kernel. Metadata refers to the basic info of a file like its file type, 
+		  size etc 
+	8. close: This essentially closes the file by returning the file descriptor number back to the kernel.                                                                             
+	9. ioctl: This calls exists to give special commands that are not read or write to a file.
+	10. statx: This syscall is a specialised version of fstat basically as it provides a more detailed metadata. Not only can you specifiy only
+		   what you want, you can also get extra info that fstat does not provide.
+	11. newfstatat: Basically, this one is like fstat only but does not require the fle to be open as it can get metadata from a path
+			that is relative to the directory.
+	12. getdents64: This works like the ls command in the terminal and lists the files and folders present in a directory.
+	13. write: This receives information from your program buffer and then transmits it to the file descriptor. It kind of works like a reverse
+		   read
+	14. sigaltstack: This allocates the memory to be used in a stack when a signal handler is run. Which basically means that if there is some
+			 sort of interruption a signal is sent and recieved which causes the program to stop and the signal handler to be run.
+			 However for this handler to run, some stack space is necessary and this is where this syscall comes into play.
+	15. munmap: This is the opposite of mmap. It just removes the memory mapping freeing up that address space.
+	16. exit_group: This is the final syscall that a program makes. It is used to terminate all the threads in the program and exit.
