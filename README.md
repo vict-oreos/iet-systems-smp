@@ -1,2 +1,7 @@
-# iet-systems-smp
-IET Systems SMP (KConnect)
+# Task 3: Exploring Process Memory Layout in Linux 
+- Text segment: The first five lines of the output is the text segment ie where the compiled program code that will be fed to the CPU lies. This is readable and executable but cannot be written to prevent bugs from editing the code.
+- Heap: The 6th line in the output with [heap] at the end is the memory which the program can use whil its running, essentially dynamic memory which comes up in malloc(). One distinction between heaps and stacks is that heaps grow upwards, as in when the program requires more memoryt this is stored in higher addresses. Heaps can be written and read but cannot be executed as this is just memory/data.
+- Stack: This is the penultimate line in the output. This is where variables, function calls, return addresses etc are stored. Each time a function is called, it gets pushed onto the stack. As opposed to heap, stack grows downwards and lower addresses are used as more functions are called. Similar to heap, it cannot be executed.
+- Shared libraries: Libraries just refer to a collection of pre-defined funtions like printf() or getpid(). The 5 lines following heap refer to shared library libc.so.6. Basically the code to run these predefined functions exist in these libraries. They are treffered to as shared because the code in these libraries can be used across multiple programs and is not specific to any one program.
+- These are the 4 main regions mentioned in the output. Excluding these we also have unmapped regions as seen by the lines 12-14. and the line above stack. 
+
