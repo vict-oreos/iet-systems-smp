@@ -1,2 +1,9 @@
-# iet-systems-smp
-IET Systems SMP (KConnect)
+# Task 4: TCP Echo Server and Client
+- For this task, I've written the code for a TCP echo server and client in two separate files respectively.
+- A TCP echo server creates a socket and binds it to and address and port id. It then listens for an active connection which it accepts and receives data from this client connection and echoes it back and then finally closes the connection.
+- For this code, I initally imported the socket which is part of the Python standard library anyway and then declared the host address and the port number. According to the resources shared, if the address is 127.0.0.1 then the socket created will only be visible to the machine so I have bound the socket to this address and then it was advised not to use lower numbers for the port so I went with 80. Then I created the socket as explained using the syntax given. I set the socket configuration because it was advised that without this, if I were to stop and restart the server quickly, I would get an error since the OS tends to hold onto the port for a few seconds even after closing. This command basically tells it not to do so. Then I used the code for binding, listening and accepting a connection as given in the resources. Then since we receive the data in bytes, it has to be decoded before being printed. Finally connection is closed so that the client does not end up hanging indefinitely.
+- A TCP client basically connects to the server, sends some data and recieves it back.
+- The first part of the code is similar to that of the server. Then we connect the client to the server and send the message using sendall instead of send so that the message goes all at once. Then the message is reecived back and connection is closed. This is the basic working of the code written.
+- Now I ran each of these in two separate terminals and received the following output as shwon in the attached screenshots. Forst we run the server code then the client code. 
+
+
