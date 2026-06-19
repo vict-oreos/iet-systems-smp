@@ -1,2 +1,2 @@
-# iet-systems-smp
-IET Systems SMP (KConnect)
+# Task 6: Hashing
+Hashing a password with SHA-256 is more dangerous because this method generates identical hashes for a password. Which means that if a password is "123" the hash for that would be the same each time. So, if a hacker is aware of the hash and what its input is, they will have access to the password easily whereas when you use the salting method, a unqiue hash is generated because before hashing, a salt ie. a random value is combined with the password. This leads to a unique hash generation, making it a safer option than SHA-256.
